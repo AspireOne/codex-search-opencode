@@ -1,0 +1,39 @@
+{
+  "name": "codex-search-opencode",
+  "version": "2.0.0",
+  "description": "Model-independent Codex web search and research plugin for OpenCode V2.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src/**/*",
+    "templates/**/*",
+    "README.md",
+    "HOW-IT-WORKS.md",
+    "HOW-IT-WAS-EXTRACT.md"
+  ],
+  "scripts": {
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "opencode-plugin",
+    "opencode",
+    "codex",
+    "web-search",
+    "openai",
+    "research"
+  ],
+  "author": "Mateus DCC",
+  "license": "MIT",
+  "dependencies": {
+    "@opencode/plugin": "2.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "tsx": "^4.23.11",
+    "typescript": "^5.9.3"
+  }
+}

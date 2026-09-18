@@ -1,0 +1,11 @@
+allowBuilds:
+  esbuild: true
+  # Optional native accelerators pulled in by @opencode/plugin; the pure-JS
+  # fallbacks are used instead.
+  msgpackr-extract: false
+  protobufjs: false
+
+# @opencode/plugin types must match the installed OpenCode CLI version, which
+# is newer than the default minimumReleaseAge window.
+minimumReleaseAgeExclude:
+  - "@opencode/*"
