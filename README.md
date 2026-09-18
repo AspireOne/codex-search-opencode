@@ -23,23 +23,21 @@ The OpenCode agent keeps its own model. The plugin only retrieves; it never asks
 
 ### Local checkout
 
-The V2 loader resolves a configured plugin directory through `<dir>/index.ts`. This repository has a root `index.ts` that re-exports `src/index.ts`.
-
-Link the checkout into the global plugin directory:
-
-```bash
-ln -s /path/to/codex-search-opencode ~/.config/opencode/plugins/codex-search
-```
-
-Restart OpenCode. The plugin is loaded and watched, so later edits reload automatically.
-
-Alternatively, point the config at the directory:
+The V2 loader resolves a plugin directory through `<dir>/index.ts`. This repository has a root `index.ts` that re-exports `src/index.ts`. Point the config at the checkout:
 
 ```jsonc
 {
   "$schema": "https://opencode.ai/config.json",
   "plugins": ["/path/to/codex-search-opencode"]
 }
+```
+
+Restart OpenCode. The plugin directory is watched, so later edits reload automatically.
+
+Alternatively, link the checkout into the global plugin directory:
+
+```bash
+ln -s /path/to/codex-search-opencode ~/.config/opencode/plugins/codex-search
 ```
 
 ### Published package
