@@ -24,7 +24,7 @@ The OpenCode agent keeps its own model. The plugin only retrieves; it never asks
 ### From GitHub
 
 ```sh
-opencode plugin add github:AspireOne/codex-search-opencode#v2.0.0
+opencode plugin add github:AspireOne/codex-search-opencode#v2.0.1
 ```
 
 The tag keeps every machine on a known commit. Use `#main` to track a moving ref, or `#<full-sha>` to pin one; only full commit hashes skip update checks. `opencode plugin check` reports newer revisions and `opencode plugin update codex-search-opencode` applies them.
@@ -34,7 +34,7 @@ The same entry works directly in `~/.config/opencode/opencode.json(c)`:
 ```jsonc
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugins": ["github:AspireOne/codex-search-opencode#v2.0.0"]
+  "plugins": ["github:AspireOne/codex-search-opencode#v2.0.1"]
 }
 ```
 
