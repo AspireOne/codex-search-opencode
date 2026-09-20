@@ -21,9 +21,28 @@ The OpenCode agent keeps its own model. The plugin only retrieves; it never asks
 
 ## Install
 
+### From GitHub
+
+```sh
+opencode plugin add github:AspireOne/codex-search-opencode#v2.0.0
+```
+
+The tag keeps every machine on a known commit. Use `#main` to track a moving ref, or `#<full-sha>` to pin one; only full commit hashes skip update checks. `opencode plugin check` reports newer revisions and `opencode plugin update codex-search-opencode` applies them.
+
+The same entry works directly in `~/.config/opencode/opencode.json(c)`:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": ["github:AspireOne/codex-search-opencode#v2.0.0"]
+}
+```
+
+OpenCode installs the package into its own cache and loads `exports["."]`. No build step: the V2 loader runs the TypeScript entrypoint directly.
+
 ### Local checkout
 
-The V2 loader resolves a plugin directory through `<dir>/index.ts`. This repository has a root `index.ts` that re-exports `src/index.ts`. Point the config at the checkout:
+For development, point the config at the checkout:
 
 ```jsonc
 {
@@ -32,7 +51,7 @@ The V2 loader resolves a plugin directory through `<dir>/index.ts`. This reposit
 }
 ```
 
-Restart OpenCode. The plugin directory is watched, so later edits reload automatically.
+Restart OpenCode. The plugin directory is watched, so later edits reload automatically. The root `index.ts` re-exports `src/index.ts`, which is what directory-based loading resolves; the packaged tarball omits the root file and resolves through `exports` instead.
 
 Alternatively, link the checkout into the global plugin directory:
 
@@ -40,14 +59,9 @@ Alternatively, link the checkout into the global plugin directory:
 ln -s /path/to/codex-search-opencode ~/.config/opencode/plugins/codex-search
 ```
 
-### Published package
+### npm
 
-```jsonc
-{
-  "$schema": "https://opencode.ai/config.json",
-  "plugins": ["codex-search-opencode"]
-}
-```
+This V2 port is not published to npm. `codex-search-opencode` on the registry is the upstream V1 plugin, so installing that name gets V1. Use the Git or local-checkout install above.
 
 ## Provider selection
 
